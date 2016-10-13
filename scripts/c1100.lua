@@ -61,6 +61,6 @@ function c1100.e2operation(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetCode(EFFECT_UPDATE_ATTACK)
 	e1:SetReset(RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END)
-	e1:SetValue(1100)
+	e1:SetValue(1000)
 	a:RegisterEffect(e1)
 end
