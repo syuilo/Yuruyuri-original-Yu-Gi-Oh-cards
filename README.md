@@ -1,4 +1,5 @@
 # Yuruyuri-original-Yu-Gi-Oh-cards
+「ゆるゆり」の遊戯王オリジナルカードです。ADSで使用できます。
 
 ## 導入
 1. 「cards」データベース上で付属の SQL.txt の内容をコピペしてSQLを発行
