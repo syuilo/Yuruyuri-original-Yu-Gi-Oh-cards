@@ -72,7 +72,7 @@ function c1070.e2operation(e, tp, eg, ep, ev, re, r, rp)
 end
 
 function c1070.e3condition(e, tp, eg, ep, ev, re, r, rp)
-	return rp~=tp and e:GetHandler():IsPreviousLocation(LOCATION_ONFIELD) and e:GetHandler():IsReason(REASON_DESTROY)
+	return rp ~= tp and e:GetHandler():IsPreviousLocation(LOCATION_ONFIELD) and e:GetHandler():IsReason(REASON_DESTROY)
 end
 
 -- (特殊召喚する)櫻子フィルター
@@ -84,7 +84,7 @@ function c1070.e3target(e, tp, eg, ep, ev, re, r, rp, chk, chkc)
 	if chkc then return chkc:IsLocation(LOCATION_DECK) and chkc:IsControler(tp) and c1070.e3filter(chkc, e, tp) end
 	if chk == 0 then return Duel.IsExistingTarget(c1070.e3filter, tp, LOCATION_DECK, 0, 1, nil, e, tp) end
 	Duel.Hint(HINT_SELECTMSG, tp, HINTMSG_SPSUMMON)
-	local g=Duel.SelectTarget(tp, c1070.e3filter, tp, LOCATION_DECK, 0, 1, 1, nil, e, tp)
+	local g = Duel.SelectTarget(tp, c1070.e3filter, tp, LOCATION_DECK, 0, 1, 1, nil, e, tp)
 	Duel.SetOperationInfo(0, CATEGORY_SPECIAL_SUMMON, g, 1, 0, 0)
 end
 
