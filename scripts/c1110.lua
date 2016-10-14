@@ -40,23 +40,23 @@ function c1110.e1condition(e, c)
 		Duel.IsExistingMatchingCard(c1110.e1spfilter, c:GetControler(), LOCATION_ONFIELD, 0, 1, nil)
 end
 
-function c1110.e2condition(e,tp,eg,ep,ev,re,r,rp)
+function c1110.e2condition(e, tp, eg, ep, ev, re, r, rp)
 	return not e:GetHandler():IsStatus(STATUS_BATTLE_DESTROYED) and rp ~= tp and Duel.IsChainNegatable(ev)
 end
 
-function c1110.e2target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return true end
-	Duel.SetOperationInfo(0,CATEGORY_NEGATE,eg,1,0,0)
+function c1110.e2target(e, tp, eg, ep, ev, re, r, rp, chk)
+	if chk == 0 then return true end
+	Duel.SetOperationInfo(0, CATEGORY_NEGATE, eg, 1, 0, 0)
 	if re:GetHandler():IsDestructable() and re:GetHandler():IsRelateToEffect(re) then
-		Duel.SetOperationInfo(0,CATEGORY_DESTROY,eg,1,0,0)
+		Duel.SetOperationInfo(0, CATEGORY_DESTROY, eg, 1, 0, 0)
 	end
 end
 
-function c1110.e2operation(e,tp,eg,ep,ev,re,r,rp)
-	local c=e:GetHandler()
+function c1110.e2operation(e, tp, eg, ep, ev, re, r, rp)
+	local c = e:GetHandler()
 	Duel.NegateActivation(ev)
 	if re:GetHandler():IsRelateToEffect(re) then
-		Duel.Destroy(eg,REASON_EFFECT)
+		Duel.Destroy(eg, REASON_EFFECT)
 	end
-	Duel.SendtoHand(c,nil,REASON_EFFECT)
+	Duel.SendtoHand(c, nil, REASON_EFFECT)
 end
