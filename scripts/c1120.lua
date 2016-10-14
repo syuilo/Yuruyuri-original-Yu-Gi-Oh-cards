@@ -11,6 +11,7 @@ function c1120.initial_effect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e1:SetCode(EVENT_SUMMON_SUCCESS)
 	e1:SetProperty(EFFECT_FLAG_DAMAGE_STEP)
+	e1:SetTarget(c1120.e1target)
 	e1:SetOperation(c1120.e1operation)
 	c:RegisterEffect(e1)
 	local e2 = e1:Clone()
@@ -31,12 +32,16 @@ function c1120.initial_effect(c)
 
 end
 
+function c1120.e1target(e, tp, eg, ep, ev, re, r, rp, chk)
+	if chk == 0 then return true end
+	Duel.SetTargetPlayer(tp)
+	Duel.SetTargetParam(1)
+	Duel.SetOperationInfo(0, CATEGORY_DRAW, nil, 0, tp, 1)
+end
+
 function c1120.e1operation(e, tp, eg, ep, ev, re, r, rp)
-	local c=e:GetHandler()
-	if c:IsFaceup() and c:IsRelateToEffect(e) then
-		local p, d = Duel.GetChainInfo(0, CHAININFO_TARGET_PLAYER, CHAININFO_TARGET_PARAM)
-		Duel.Draw(p, d, REASON_EFFECT) -- 自分はデッキからカードを1枚ドローする
-	end
+	local p, d = Duel.GetChainInfo(0, CHAININFO_TARGET_PLAYER, CHAININFO_TARGET_PARAM)
+	Duel.Draw(p, d, REASON_EFFECT) -- 自分はデッキからカードを1枚ドローする
 end
 
 function c1120.e3condition(e, tp, eg, ep, ev, re, r, rp)
